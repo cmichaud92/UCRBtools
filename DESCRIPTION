@@ -16,6 +16,11 @@ Imports:
     foreign,
     tibble,
     stringr,
-    magrittr
+    magrittr,
+    openxlsx,
+    httr,
+    readxl,
+    lubridate,
+    purrr
 Depends: 
     R (>= 2.10)
