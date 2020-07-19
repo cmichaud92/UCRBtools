@@ -1,0 +1,47 @@
+
+
+river_tbl <- readRDS("c:/Users/cmichaud/proj_mgt/pdo/pdo_123a/rvr_tbl.Rds")
+
+rvr_tbl$basin[36] <- "Lower Colorado"
+river_tbl <- rvr_tbl
+usethis::use_data(river_tbl)
+
+spp_tbl <- readRDS("c:/Users/cmichaud/proj_mgt/pdo/pdo_123a/species_tbl.Rds") 
+usethis::use_data(spp_tbl)
+
+rmi_coord <- sf::read_sf("c:/Users/cmichaud/proj_mgt/spat/geo_spatR/spatialite/ucrb.sqlite", layer = "ucrb_rmi_pt1") %>% 
+    sf::st_transform(crs = 32612) %>% 
+    mutate(loc_x = sf::st_coordinates(GEOMETRY)[1],
+           loc_y = sf::st_coordinates(GEOMETRY)[2]) #%>%
+    sf::st_drop_geometry()
+
+mapview::mapview(rmi_coord)
+usethis::use_data(rmi_coord)
+
+library(dplyr)
+reach_tbl <- reach_tbl %>% 
+    mutate(rvr_code = case_when(rvr_id == 1 ~ "CO",
+                                rvr_id == 2 ~ "GR",
+                                rvr_id == 3 ~ "SJ",
+                                rvr_id == 4 ~ "DO",
+                                rvr_id == 11 ~ "LP",
+                                rvr_id == 12 ~ "GRCA")) %>% 
+    select(rch_id, rvr_code, rch_code:dn_name)
+tbl_reach <- reach_tbl
+tbl_river <- river_tbl
+tbl_spp <- spp_tbl
+
+
+
+usethis::use_data(tbl_spp)
+
+spp_end <- c("CS", "RZ", "HB", "BT")
+usethis::use_data(spp_end)
+spp_nat <- native
+usethis::use_data(spp_nat)
+
+spp_com <- c("CS", "RZ", "HB", "BT", "SD", "FM", "BH", "RT", "SM", "BC", "WF",
+             "LG", "BG", "GS", "GC", "BB", "YB", "WE", "GZ", "NP", "WS", "CH")
+usethis::use_data(spp_com)
+typeof(spp_com)
+attributes(spp_com)

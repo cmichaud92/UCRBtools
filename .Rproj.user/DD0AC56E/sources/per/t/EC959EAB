@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1591999502336.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3966741069",
+    "id" : "EC959EAB",
+    "lastKnownWriteTime" : 1592101112,
+    "last_content_update" : 1592101112957,
+    "path" : "C:/Users/cmichaud/proj_mgt/package/UCRBtools/R/dbf_io.R",
+    "project_path" : "R/dbf_io.R",
+    "properties" : {
+        "cursorPosition" : "16,31",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

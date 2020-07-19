@@ -1,0 +1,73 @@
+
+
+#######################################################################################################################
+#                                      Coords_to_rmi() function for epsg 4326                                         #
+#######################################################################################################################
+
+#  Updated version of coords_to_rmi.
+#       Input is an R object with ilon and ilat cols (points in wgs84)
+#  Extent: the sf object contains all Mainstem and tributaries upstream of Lee's ferry
+
+
+coords_to_rmi <- function(data, x_coord, y_coord, epsg) {
+
+    require(sf)
+    require(sp)
+    require(dplyr)
+    require(readr)
+    require(readxl)
+    require(openxlsx)
+    
+    
+    obs_sf <- st_as_sf(data, coords = c(x_coord, y_coord), crs = epsg) %>% 
+        st_transform(crs = 32612)
+    
+    
+#   RMI data
+    rmi_sf <- read_sf("C:/Users/cmichaud/Documents/01_projects/geo_spatR/spatialite/ucrb.sqlite", 
+                      layer = "ucrb_rmi_pt") %>% 
+        st_transform(crs = st_crs(obs_sf))
+    
+    st_crs(rmi_sf)
+    st_crs(obs_sf)
+    obs_sf$index <- st_nearest_feature(obs_sf, rmi_sf)
+
+# Create tibble, index col
+    rmi <- rmi_sf %>% 
+        rename(rmi_coord = rmi) %>% 
+        mutate(index = row_number(),
+               rmi_coord = as.numeric(rmi_coord)) %>%
+        as_tibble() %>% 
+        dplyr::select(index, rmi_coord)
+
+# Join rmi data to obs_sf and conv to tibble
+    obs1 <- obs_sf %>% 
+        left_join(rmi, by = "index") %>% 
+        select(-index) 
+    
+    obs1$utm_x <- st_coordinates(obs1)[, 1]
+    obs1$utm_y <- st_coordinates(obs1)[, 2]
+    obs1$epsg <- st_crs(obs1)$epsg
+    st_geometry(obs1) <- NULL
+    
+# Return 
+    obs1
+}
+
+# Debug ---------------------------------------------------------------------------------------
+
+#  t <- coords_to_rmi(data = clean$site, x_coord = "ilon", y_coord = "ilat", epsg = 4326)
+  
+ # y <- coords_to_rmi(x)
+
+ # coord_path <- "C:/Users/cmichaud/Documents/01_Projects/Other_Projects/01_DataSubmissions/01_OfficeSubs/STReaMS_Subs"
+# coord_filename <- "UDWR_Moab_Project123a_2018.xlsx"
+# sheet = 1
+# rmi_path <- "./01_data/01_ucrbProj/01_point"
+# rmi_filename <- "ucrb_rmi_comp.rds"
+# 
+# coords_to_rmi(coord_path = coord_path, 
+#               coord_filename = coord_filename, 
+#               sheet = sheet)
+#              rmi_path = rmi_path, 
+#              rmi_filename = rmi_filename)

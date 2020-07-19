@@ -1,0 +1,21 @@
+Package: UCRBtools
+Type: Package
+Title: Useful Functions for Data Manipulation, Analysis and Visualization
+Version: 0.1.0
+Author: person("Chris", "Michaud", email = "cmichaud@utah.gov",
+               role = c("aut", "cre"))
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+Imports:
+    dplyr,
+    purrr,
+    foreign,
+    tibble,
+    stringr,
+    magrittr
+Depends: 
+    R (>= 2.10)
