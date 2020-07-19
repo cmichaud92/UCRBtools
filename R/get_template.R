@@ -8,11 +8,11 @@
 #       and returns 3 empty DFs analagous to each of the 3 collection sheets:
 #       site_tmplt, rare_tmplt, ntf_tmplt
 
-library(httr)
-library(readxl)
-library(dplyr)
-library(lubridate)
-library(purrr)
+# library(httr)
+# library(readxl)
+# library(dplyr)
+# library(lubridate)
+# library(purrr)
 
 #source("./src/fun/mst.R")
 
@@ -33,7 +33,7 @@ get_template <- function() {
     template <- tempfile(fileext = ".xlsx")  # creates a temp file
 
     httr::GET(url = "https://streamsystem.org/documents/resources/fieldcollection_template_v3-21-2019.xlsx",
-        write_disk(template) )        # accesses the web data and writes it to the temp file
+        httr::write_disk(template) )        # accesses the web data and writes it to the temp file
 
 
     # Import templates, specifying col types and time zone
