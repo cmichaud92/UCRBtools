@@ -4,14 +4,14 @@
 STReaMS_xlsx_wkbk <- function(data = data, year, Project, output_path = "./05_output") {
 
     # Set Default options (only work on cols where data is present)
-    openxlsx::options("openxlsx.datetimeFormat" = "yyyy-mm-dd hh:mm:ss")            # Sets default date format
-    openxlsx::options("openxlsx.numFmt" = "0.0")                                    # Sets default numeric to 1 decimal place
+    options("openxlsx.datetimeFormat" = "yyyy-mm-dd hh:mm:ss")            # Sets default date format
+    options("openxlsx.numFmt" = "0.0")                                    # Sets default numeric to 1 decimal place
 
     # Set style formats for specific formatting requirements
-    n0 <- createStyle(numFmt = "0")                                        # Creates a style object for interger
-    n1<- createStyle(numFmt = "0.0")                                       # One decimal place
-    n4 <- createStyle(numFmt = "0.0000")                                   # Four decimal places
-    t <- createStyle(numFmt = "@")                                         # Text formatting
+    n0 <- openxlsx::createStyle(numFmt = "0")                                        # Creates a style object for interger
+    n1<- openxlsx::createStyle(numFmt = "0.0")                                       # One decimal place
+    n4 <- openxlsx::createStyle(numFmt = "0.0000")                                   # Four decimal places
+    t <- openxlsx::createStyle(numFmt = "@")                                         # Text formatting
 
     # Rare Fish fmt
     r_n0 <- c(8, 25)
@@ -32,7 +32,7 @@ STReaMS_xlsx_wkbk <- function(data = data, year, Project, output_path = "./05_ou
     n_t <- c(3:6, 10, 11, 13, 17:39, 43)
 
     # Create a blank workbook
-    B <- createWorkbook()
+    B <- openxlsx::createWorkbook()
 
     # Add worksheets and data
     openxlsx::addWorksheet(wb = B, sheetName = "Rare Fish datasheet")                # Adds a blank sheet and names it

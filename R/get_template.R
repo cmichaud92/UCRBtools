@@ -57,7 +57,8 @@ get_template <- function() {
     template <- list(site_tmplt, ntf_tmplt, rare_tmplt)
     names(template) <- c("site_tmplt", "ntf_tmplt", "rare_tmplt")
 
-    template <- purrr::map(template, function(x) dplyr::modify_if(x, is.POSIXct, mst))
+    template <- purrr::map(template, function(x) purrr::modify_if(x, lubridate::is.POSIXct,
+                                                                  function(x) lubridate::ymd_hms(x, tz = "MST")))
 }
 
 #a <- get_template()
