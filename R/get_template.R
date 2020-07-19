@@ -32,24 +32,24 @@ get_template <- function() {
     # access the most recient template from the STReaMS website
     template <- tempfile(fileext = ".xlsx")  # creates a temp file
 
-    GET(url = "https://streamsystem.org/documents/resources/fieldcollection_template_v3-21-2019.xlsx",
+    httr::GET(url = "https://streamsystem.org/documents/resources/fieldcollection_template_v3-21-2019.xlsx",
         write_disk(template) )        # accesses the web data and writes it to the temp file
 
 
     # Import templates, specifying col types and time zone
-    site_tmplt <- read_xlsx(template,
+    site_tmplt <- readxl::read_xlsx(template,
                             sheet = 4,
                             col_types =  site_col_type)
 #        modify_if(is.POSIXct, mst)
 
 
-    ntf_tmplt <- read_xlsx(template,
+    ntf_tmplt <- readxl::read_xlsx(template,
                            sheet = 6,
                            col_types = ntf_col_type) %>%
         slice(0)
 #        modify_if(is.POSIXct, mst)
 
-    rare_tmplt <- read_xlsx(template,
+    rare_tmplt <- readxl::read_xlsx(template,
                             sheet = 2,
                             col_types = rare_col_type)
 #        modify_if(is.POSIXct, mst)
@@ -57,7 +57,7 @@ get_template <- function() {
     template <- list(site_tmplt, ntf_tmplt, rare_tmplt)
     names(template) <- c("site_tmplt", "ntf_tmplt", "rare_tmplt")
 
-    template <- map(template, function(x) modify_if(x, is.POSIXct, mst))
+    template <- purrr::map(template, function(x) dplyr::modify_if(x, is.POSIXct, mst))
 }
 
 #a <- get_template()
