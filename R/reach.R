@@ -44,6 +44,8 @@ reach <- function(.data, RiverCode, rmi) {
                                      rmi > 189.8 ~ "UCO",
                                  RiverCode == "CO" &
                                      rmi < -0 ~ "CAT",
+                                 RiverCode == "DO" &
+                                     between(rmi, 0, 20) ~ "LDO",
                                  RiverCode == "YA" &
                                      rmi < 46.9 ~ "LYA",
                                  RiverCode == "YA" &
