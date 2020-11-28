@@ -55,9 +55,9 @@ reach <- function(.data, RiverCode, rmi) {
                                  RiverCode == "WH" &
                                      rmi < 71.7 ~ "LWH",
                                  RiverCode == "WH" &
-                                     between(rmi, 71.7, 103.6) ~ "MWH",
+                                     between(rmi, 71.7, 104.5) ~ "MWH",
                                  RiverCode == "WH" &
-                                     rmi > 103.6 ~ "UWH",
+                                     rmi > 104.5 ~ "UWH",
                                  RiverCode == "DU" &
                                      rmi < 16.7 ~ "LDU",
                                  RiverCode == "DU" &
