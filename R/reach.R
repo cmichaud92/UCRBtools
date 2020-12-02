@@ -24,7 +24,7 @@
 reach <- function(.data, RiverCode, rmi) {
 
     .data %>%
-        dplyr::mutate(reach = dplyr::case_when(RiverCode == "GR" &
+        dplyr::mutate(cd_rch = dplyr::case_when(RiverCode == "GR" &
                                      rmi < 129.5 ~ "LGR",
                                  RiverCode == "GR" &
                                      between(rmi, 129.5, 207.1) ~ "DESO",
