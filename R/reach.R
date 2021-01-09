@@ -1,25 +1,11 @@
-
-#######################################################
-#                NNF BWR functions                    #
-#######################################################
-
-# life_stage() assigns life stage categories to SM, NP, WE based on recovery program specs
-
-# reach() assigns management reaches to major rivers based on rmi
-
-
-#---------------------------------
-# life_stage()
-#---------------------------------
-
-# Lumps adult and piscivore into `adult` lifestage
-
-
-
-
-#--------------------------------------------
-# reach()
-#--------------------------------------------
+#' @title Reach designation
+#'
+#' @description
+#'
+#' Appends reach codes to data based on "rmi"
+#'
+#' @author Christopher Michaud
+#' @export
 
 reach <- function(.data, RiverCode, rmi) {
 
@@ -87,4 +73,6 @@ reach <- function(.data, RiverCode, rmi) {
                                  RiverCode == "SJ" &
                                      rmi >= 170.5 ~ "UUSJ"))
 }
+
+
 
