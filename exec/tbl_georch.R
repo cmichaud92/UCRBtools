@@ -1,10 +1,11 @@
 
 library(tidyverse)
 library(UCRBtools)
-rch <- read_csv("~/reach-table.csv")
+rch <- read_csv("~/reach-table.csv") %>%
+    rename(cd_georch = cd_rch)
 
 rch2 <- tribble(
-    ~cd_rch, ~cd_rvr, ~fct_rvr, ~fct_rch, ~nhd_up, ~nhd_dn, ~nm_up, ~nm_dn,
+    ~cd_georch, ~cd_rvr, ~fct_rvr, ~fct_georch, ~nhd_up, ~nhd_dn, ~nm_up, ~nm_dn,
     "CIS", "CO", "Colorado River", "Cisco", 118.0, 95.9, "above Big Hole", "Dewey",
     "DAL", "CO", "Colorado River", "Daily", 95.9, 75.0, "Dewey", "Takeout Beach",
     "MOB", "CO", "Colorado River", "Moab", 75.0, 47.8, "Takeout Beach", "Potash",
@@ -35,7 +36,7 @@ tbl_georch <- rch %>%
            fct_rch = fct_reorder(fct_rch, idx),
            .keep = "unused") %>%
     arrange(fct_rvr, desc(nhd_up)) %>%
-    mutate(id_rch = row_number()) %>%
+    mutate(id_georch = row_number()) %>%
     select(starts_with(c("id_", "cd_", "fct_")), everything()) %>%
     select(-idx)
 
