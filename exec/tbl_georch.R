@@ -56,3 +56,7 @@ select(starts_with(c("id_", "cd_", "fct_")), everything()) %>%
     select(-idx)
 
 arrange(cd_rvr, desc(nhd_up))
+
+# correct col names
+tbl_georch <- tbl_georch %>%
+    rename(fct_georch = fct_rch)
