@@ -50,6 +50,10 @@ levels(rch3$fct_rvr)
 levels(rch3$fct_rch)
 levels(tbl_rch$fct_rch)
 
+tbl_spp <- s
+t
+s$nm_com[s$cd_spp == "CH"] <- "unknown chub"
+usethis::use_data(tbl_spp)
 
 #    arrange(id_rch) %>%
 select(starts_with(c("id_", "cd_", "fct_")), everything()) %>%
