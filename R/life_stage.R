@@ -6,6 +6,29 @@
 # Classifies Smallmouth, Walleye and Northern Pike into UCRB life stage classifications
 # Use piscivore = TRUE to divide adult class into adult and adult_pic (piscivore)
 
+life_stage_nf <- function(.data, specvar, lenvar, ...) {
+    .data %>%
+        dplyr::mutate(ls = dplyr::case_when({{specvar}} == "CS" &
+                                                {{lenvar}} <= 90 ~ "YOY",
+                                            {{specvar}} == "CS" &
+                                                {{lenvar}} >= 90 & {{lenvar}} < 400 ~ "JUV",
+                                            {{specvar}} == "CS" &
+                                                {{lenvar}} >= 400 ~ "ADULT",
+                                            {{specvar}} %in% c("RZ", "FM", "BH", "FR", "FB", "BHRZ", "SU") &
+                                                {{lenvar}} < 100 ~ "YOY",
+                                            {{specvar}} %in% c("RZ", "FM", "BH", "FR", "FB", "BHRZ", "SU") &
+                                                {{lenvar}} >= 100 & {{lenvar}} < 400 ~ "JUV",
+                                            {{specvar}} %in% c("RZ", "FM", "BH", "FR", "FB", "BHRZ", "SU") &
+                                                {{lenvar}} <= 400 ~ "ADULT",
+                                            {{specvar}} %in% c("BT", "HB", "RT", "CH") &
+                                                {{lenvar}} < 100 ~ "YOY",
+                                            {{specvar}} %in% c("BT", "HB", "RT", "CH") &
+                                                {{lenvar}} >= 100 & {{lenvar}} <= 250 ~ "JUV",
+                                            {{specvar}} %in% c("BT", "HB", "RT", "CH") &
+                                                {{lenvar}} > 250 ~ "ADULT"))
+}
+
+
 life_stage <- function(.data, specvar, lenvar, piscivore = FALSE, ...) {
 
     if (piscivore == TRUE) {
