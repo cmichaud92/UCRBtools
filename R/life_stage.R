@@ -19,7 +19,7 @@ life_stage_nf <- function(.data, specvar, lenvar, ...) {
                                             {{specvar}} %in% c("RZ", "FM", "BH", "FR", "FB", "BHRZ", "SU") &
                                                 {{lenvar}} >= 100 & {{lenvar}} < 400 ~ "JUV",
                                             {{specvar}} %in% c("RZ", "FM", "BH", "FR", "FB", "BHRZ", "SU") &
-                                                {{lenvar}} <= 400 ~ "ADULT",
+                                                {{lenvar}} >= 400 ~ "ADULT",
                                             {{specvar}} %in% c("BT", "HB", "RT", "CH") &
                                                 {{lenvar}} < 100 ~ "YOY",
                                             {{specvar}} %in% c("BT", "HB", "RT", "CH") &
