@@ -23,11 +23,11 @@ geo_rch <- function(.data, cd_rvr = cd_rvr, rmi = rmi_nhd) {
                                                    {{cd_rvr}} == "GR" &
                                                        between({{rmi}}, 158.0, 190.6) ~ "DES",
                                                    {{cd_rvr}} == "GR" &
-                                                       between({{rmi}}, 190.7, 240.0) ~ "MGR",
+                                                       between({{rmi}}, 190.7, 240.0) ~ "LMGR",
                                                    {{cd_rvr}} == "GR" &
                                                        between({{rmi}}, 240.1, 260.0) ~ "OUR",
                                                    {{cd_rvr}} == "GR" &
-                                                       between({{rmi}}, 260.1, 300.0) ~ "MGR",
+                                                       between({{rmi}}, 260.1, 300.0) ~ "UMGR",
                                                    {{cd_rvr}} == "GR" &
                                                        between({{rmi}}, 300.1, 321.3) ~ "JEN",
                                                    {{cd_rvr}} == "GR" &
@@ -41,7 +41,7 @@ geo_rch <- function(.data, cd_rvr = cd_rvr, rmi = rmi_nhd) {
                                                    {{cd_rvr}} == "GR" &
                                                        {{rmi}} > 364.8 ~ "UGR",
                                                    {{cd_rvr}} == "CO" &
-                                                       {{rmi}} < 47.8 ~ "MEA",
+                                                       {{rmi}} < 47.9 ~ "MEA",
                                                    {{cd_rvr}} == "CO" &
                                                        between({{rmi}}, 47.9, 75.0) ~ "MOB",
                                                    {{cd_rvr}} == "CO" &

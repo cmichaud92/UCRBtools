@@ -1,0 +1,53 @@
+id_georch,cd_georch,cd_rvr,fct_rvr,fct_rch,fct_georch,nhd_up,nhd_dn,nm_up,nm_dn
+1,UCO,CO,Colorado River,Upper Colorado River,NA,360.4,195.4,Kremmling,Price Stubb Diversion
+2,GRVA,CO,Colorado River,Grand Valley,NA,195.4,154.6,Price Stubb Diversion,Loma Boat Ramp
+3,UCO,CO,Colorado River,NA,Upper Colorado River,195.4,439.5,Grand Lake,Prive-Stubb Diversion
+4,GRVA,CO,Colorado River,NA,Grand Valley,195.4,154.6,Price-Stubb Diversion,Loma
+5,RUHT,CO,Colorado River,Ruby-Horsethief Canyon,NA,154.6,129.3,Loma ramp,Westwater Ranger Station
+6,WWRH,CO,Colorado River,NA,Westwater-Ruby-Horsethief,154.6,118,Loma,above Big Hole
+7,WW,CO,Colorado River,Westwater Canyon,NA,129.3,118,Westwater Ranger Station,above Big Hole
+8,CIS,CO,Colorado River,NA,Cisco,118,95.9,above Big Hole,Dewey
+9,DAL,CO,Colorado River,NA,Daily,95.9,75,Dewey,Takeout Beach
+10,MOB,CO,Colorado River,NA,Moab,75,47.8,Takeout Beach,Potash
+11,MEA,CO,Colorado River,NA,Meander Canyon,47.8,0,Potash,Green River Confluence
+12,CAT,CO,Colorado River,Cataract Canyon,NA,0,-47.4,Confluence,North Wash ramp
+13,LDO,DO,Dolores River,Lower Dolores River,NA,15,0,Rio Mesa,Colorado River Confluence
+14,LGU,GU,Gunnison River,Lower Gunnison River,NA,30,0,Bridgeport,Colorado River Confluence
+15,UGR,GR,Green River,Upper Green River,NA,412.7,364.8,Flaming Gorge Dam,Gates of Lodor Boat Ramp
+16,LOD,GR,Green River,NA,Lodor Canyon,364.8,346.3,Gates of Lodor,Yampa River Confluence
+17,WPC,GR,Green River,NA,Whirlpool Canyon,346.3,335.9,Yampa River Confluence,Cove Camp
+18,IRP,GR,Green River,NA,Island and Rainbow Parks,335.9,328.6,Cove Camp,Above Moonshine Rapid
+19,SPM,GR,Green River,NA,Split Mountain Canyon,328.6,321.3,Above Moonshine Rapid,Split Mountain Boat Ramp
+20,MGR,GR,Green River,Middle Green River,NA,321.3,190.6,Split Mountain Boat Ramp,Jack Creek
+21,UMGR,GR,Green River,NA,Upper Middle Green River,300.1,260,Below Jensen,Ouray National Fish Hatchery
+22,JEN,GR,Green River,NA,Jensen,300.1,321.3,Split Mountain Boat Ramp,Below Jensen
+23,LMGR,GR,Green River,NA,Lower Middle Green River,240,190.7,Below White Confluence,Jack Creek
+24,OUR,GR,Green River,NA,Ouray,240,260,Ouray National Fish Hatchery,Below White Confluence
+25,DES,GR,Green River,NA,Desolation Canyon,190.6,157.9,Jack Creek,Wire Fence Canyon
+26,GRA,GR,Green River,NA,Gray Canyon,157.9,129.5,Wire Fence Canyon,Tusher Diversion
+27,TDV,GR,Green River,NA,Tusher Diversion,129.5,96.6,Tusher Diversion,White Wash
+28,LAB,GR,Green River,NA,Labyrinth Canyon,96.6,34.2,White Wash,Millard Canyon
+29,TPK,GR,Green River,NA,Tower Park,34.2,19.8,Millard Canyon,Deadhorse Canyon
+30,STW,GR,Green River,NA,Stillwater Canyon,19.6,0,Deadhorse Canyon,Colorado River Confluence
+31,USR,SR,San Rafael River,Upper San Rafael River,NA,112.4,45.8,Ferron Creek,Interstate 70 Bridge
+32,LSR,SR,San Rafael River,Lower San Rafael River,NA,45.8,0,Interstate 70 Bridge,Green River Confluence
+33,UPR,PR,Price River,Upper Price River,NA,148.3,91.7,Schofield Dam,Wellington Diversion
+34,MPR,PR,Price River,Middle Price River,NA,91.7,26.7,Wellington Diversion,Woodside Bridge
+35,LPR,PR,Price River,Lower Price River,NA,26.7,0,Woodside Bridge,Green River Confluence
+36,UDU,DU,Duchesne River,Upper Duchesne River,NA,71.1,16.7,Strawberry River,Uinta River
+37,LDU,DU,Duchesne River,Lower Duchesne River,NA,16.7,0,Uinta River,Green River Confluence
+38,UWH,WH,White River,Upper White River,NA,173.6,104.5,Meeker,Kenny Dam
+39,MWH,WH,White River,Middle White River,NA,104.5,71.7,Kenny Dam,State-line
+40,LWH,WH,White River,Lower White River,NA,71.7,0,State-line,Green River Confluence
+41,UYA,YA,Yampa River,NA,Upper Yampa River,222.4,189.2,Stagecoach Resevoir,Milner
+42,UYA,YA,Yampa River,Upper Yampa River,NA,213.6,189.2,Catamount Dam,Milner
+43,MYA,YA,Yampa River,Middle Yampa River,NA,189.2,46.9,Milner,Deer Lodge Boat Ramp
+44,MYA,YA,Yampa River,NA,Middle Yampa River,189.2,46.9,Milner,Deer Lodge
+45,LYA,YA,Yampa River,Lower Yampa River,NA,46.9,0,Deer Lodge ramp,Green River Confluence
+46,LYA,YA,Yampa River,NA,Lower Yampa Canyon,46.9,0,Deer Lodge,Green River Confluence
+47,USJ,SJ,San Juan River,Upper San Juan River,NA,251.2,108,Navajo Dam,Montizuma Creek bridge
+48,MSJ,SJ,San Juan River,Middle San Juan River,NA,108,61.2,Montizuma Creek bridge,Mexican Hat Boat Ramp
+49,LSJ,SJ,San Juan River,Lower San Juan River,NA,61.2,0,Mexican Hat Ramp,Waterfall
+50,SJWF,SJ,San Juan River,San Juan Waterfall,NA,0,0,Waterfall,Waterfall
+51,LPSJ,LP,Lake Powell,Lake Powell San Juan Arm,NA,0,-53.9,Waterfall,Colorado Arm Confluence
+52,LPCO,LP,Lake Powell,Lake Powell Colorado Arm,NA,-47.4,-568.7,North Wash ramp,Glen Canyon Dam
