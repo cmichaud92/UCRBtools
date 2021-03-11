@@ -93,6 +93,9 @@ tbl_georch$nhd_dn[tbl_rch$id_rch == 16] <- 300.1
 tbl_georch$nhd_up[tbl_rch$id_rch == 19] <- 260.0
 tbl_georch$nhd_dn[tbl_rch$id_rch == 19] <- 240.0
 
+tbl_georch$nhd_up[tbl_rch$id_rch == 25] <- 19.8
+tbl_georch$nhd_up[tbl_rch$id_rch == 20] <- 190.7
+
 usethis::use_data(tbl_georch)
 
 devtools::install_github("cmichaud92/UCRBtools")
