@@ -86,10 +86,14 @@ tbl_rch <- tbl_rch  %>%
     select(starts_with(c("id_", "cd_", "fct_")), everything()) %>%
     select(-idx)
 
-write_csv(tbl_georch, "./geoReach.csv")
+tbl_georch <- tbl_georch
+tbl_georch$nhd_up[tbl_rch$id_rch == 16] <- 321.3
+tbl_georch$nhd_dn[tbl_rch$id_rch == 16] <- 300.1
 
-tbl_georch <- read_csv("c:/Users/cmichaud/proj_mgt/package/geoReach.csv")
-usethis::use_data(tbl_rch)
+tbl_georch$nhd_up[tbl_rch$id_rch == 19] <- 260.0
+tbl_georch$nhd_dn[tbl_rch$id_rch == 19] <- 240.0
+
+usethis::use_data(tbl_georch)
 
 devtools::install_github("cmichaud92/UCRBtools")
 
