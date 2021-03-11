@@ -49,23 +49,15 @@ tbl_georch <- rch %>%
     mutate(id_georch = row_number()) %>%
     select(starts_with(c("id_", "cd_", "fct_")), everything()) %>%
     select(-idx)
+vc <- tribble(
+    ~id_georch, ~cd_georch, ~cd_rvr, ~fct_rvr, ~fct_georch, ~nhd_up, ~nhd_dn, ~nm_up, ~nm_dn,
+    45, "LVC", "VC", "Vermillion Creek", "Lower Vermillion Creek", .5, 0, NA, "Green River Confluence"
+)
 
 tbl_georch <- tbl_georch %>%
-    select(-id_georch) %>%
-    mutate(fct_rvr = as_factor(fct_rvr),
-           fct_rvr = fct_relevel(fct_rvr, "Colorado River", "Dolores River", "Gunnison River",
-                                 "Green River", "San Rafael River", "Price River",
-                                 "Duchesne River", "White River", "Yampa River", "San Juan River",
-                                 "Lake Powell")) %>%
-    arrange(fct_rvr, nhd_up) %>%
-    mutate(idx = row_number(),
-           fct_rch = as_factor(fct_rch),
-           fct_rch = fct_reorder(fct_rch, idx),
-           .keep = "unused") %>%
-    arrange(fct_rvr, desc(nhd_up)) %>%
-    mutate(id_georch = row_number()) %>%
-    select(starts_with(c("id_", "cd_", "fct_")), everything()) %>%
-    select(-idx)
+    select(-c(ends_with("_rch"))) %>%
+    bind_rows(vc)
+
 
 write_csv(tbl_georch, "./geoReach.csv")
 
@@ -74,7 +66,6 @@ usethis::use_data(tbl_georch)
 
 devtools::install_github("cmichaud92/UCRBtools")
 
-devtools::install_github("cmichaud92/UCRBtools")
 levels(rch3$fct_rvr)
 levels(rch3$fct_rch)
 levels(tbl_rch$fct_rch)
