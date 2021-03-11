@@ -32,23 +32,28 @@ rch2 <- tribble(
     "UYA", "YA", "Yampa River", "Upper Yampa River", 222.4, 189.2, "Stagecoach Resevoir", "Milner",
     )
 
-tbl_georch <- rch %>%
-    select(-id_rch) %>%
-    bind_rows(rch2) %>%
+tbl_georch <- tbl_georch %>%
+    select(-id_georch) %>%
     mutate(fct_rvr = as_factor(fct_rvr),
            fct_rvr = fct_relevel(fct_rvr, "Colorado River", "Dolores River", "Gunnison River",
                                  "Green River", "San Rafael River", "Price River",
-                                 "Duchesne River", "White River", "Yampa River", "San Juan River",
+                                 "Duchesne River", "White River", "Yampa River", "Vermillion Creek", "San Juan River",
                                  "Lake Powell")) %>%
     arrange(fct_rvr, nhd_up) %>%
     mutate(idx = row_number(),
-           fct_rch = as_factor(fct_rch),
-           fct_rch = fct_reorder(fct_rch, idx),
+           fct_georch = as_factor(fct_georch),
+           fct_georch = fct_reorder(fct_georch, idx),
            .keep = "unused") %>%
     arrange(fct_rvr, desc(nhd_up)) %>%
     mutate(id_georch = row_number()) %>%
     select(starts_with(c("id_", "cd_", "fct_")), everything()) %>%
     select(-idx)
+
+
+tbl_rch <- tbl_rch
+
+table(tbl_georch$fct_georch)
+
 vc <- tribble(
     ~id_georch, ~cd_georch, ~cd_rvr, ~fct_rvr, ~fct_georch, ~nhd_up, ~nhd_dn, ~nm_up, ~nm_dn,
     45, "LVC", "VC", "Vermillion Creek", "Lower Vermillion Creek", .5, 0, NA, "Green River Confluence"
@@ -58,11 +63,33 @@ tbl_georch <- tbl_georch %>%
     select(-c(ends_with("_rch"))) %>%
     bind_rows(vc)
 
+vc <- tribble(
+    ~id_rch, ~cd_rch, ~cd_rvr, ~fct_rvr, ~fct_rch, ~nhd_up, ~nhd_dn, ~nm_up, ~nm_dn,
+    45, "LVC", "VC", "Vermillion Creek", "Lower Vermillion Creek", .5, 0, NA, "Green River Confluence"
+)
+
+tbl_rch <- tbl_rch  %>%
+    bind_rows(vc) %>%
+    select(-id_rch) %>%
+    mutate(fct_rvr = as_factor(fct_rvr),
+           fct_rvr = fct_relevel(fct_rvr, "Colorado River", "Dolores River", "Gunnison River",
+                                 "Green River", "San Rafael River", "Price River",
+                                 "Duchesne River", "White River", "Yampa River", "Vermillion Creek", "San Juan River",
+                                 "Lake Powell")) %>%
+    arrange(fct_rvr, nhd_up) %>%
+    mutate(idx = row_number(),
+           fct_rch = as_factor(fct_rch),
+           fct_rch = fct_reorder(fct_rch, idx),
+           .keep = "unused") %>%
+    arrange(fct_rvr, desc(nhd_up)) %>%
+    mutate(id_rch = row_number()) %>%
+    select(starts_with(c("id_", "cd_", "fct_")), everything()) %>%
+    select(-idx)
 
 write_csv(tbl_georch, "./geoReach.csv")
 
 tbl_georch <- read_csv("c:/Users/cmichaud/proj_mgt/package/geoReach.csv")
-usethis::use_data(tbl_georch)
+usethis::use_data(tbl_rch)
 
 devtools::install_github("cmichaud92/UCRBtools")
 
