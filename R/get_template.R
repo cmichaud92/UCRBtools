@@ -58,7 +58,7 @@ get_template <- function() {
     names(template) <- c("site_tmplt", "ntf_tmplt", "rare_tmplt")
 
     template <- purrr::map(template, function(x) purrr::modify_if(x, lubridate::is.POSIXct,
-                                                                  function(x) lubridate::ymd_hms(x, tz = "MST")))
+                                                                  function(x) lubridate::ymd_hms(x, tz = "UTC")))
 }
 
 #a <- get_template()
