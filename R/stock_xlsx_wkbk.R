@@ -105,6 +105,4 @@ stocking_xlsx_wkbk <- function(data = data, output_path = "./output/") {
                          overwrite = TRUE)
 }
 
-data <- readr::read_rds("./output/FWS-RAND_2021_stocking_data.Rds")
-stocking_xlsx_wkbk(data = data)
 
