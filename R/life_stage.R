@@ -33,43 +33,48 @@ life_stage <- function(.data, specvar, lenvar, piscivore = FALSE, ...) {
 
     if (piscivore == TRUE) {
         .data %>%
-            dplyr::mutate(ls = dplyr::case_when(specvar == "SM" &
-                                      lenvar < 100 ~ "SUB_JUV",
-                                  specvar == "SM" &
-                                      lenvar >= 100 & lenvar < 200 ~ "JUV",
-                                  specvar == "SM" &
-                                      lenvar >= 200 & lenvar < 325 ~ "ADULT",
-                                  specvar == "SM" &
-                                      lenvar >=325 ~ "ADULT_PIC",
-                                  specvar == "NP" &
-                                      lenvar < 300 ~ "JUV",
-                                  specvar == "NP" &
-                                      lenvar >= 300 & lenvar < 450 ~ "ADULT",
-                                  specvar == "NP" &
-                                      lenvar >= 450 ~ "ADULT_PIC",
-                                  specvar == "WE" &
-                                      lenvar < 300 ~ "JUV",
-                                  specvar == "WE" &
-                                      lenvar >= 300 & lenvar < 375 ~ "ADULT",
-                                  specvar == "WE" &
-                                      lenvar >= 375 ~ "ADULT_PIC"))
+            dplyr::mutate(ls = dplyr::case_when({{specvar}} == "SM" &
+                                      {{lenvar}} < 100 ~ "SUB_JUV",
+                                  {{specvar}} == "SM" &
+                                      {{lenvar}} >= 100 &
+                                      {{lenvar}} < 200 ~ "JUV",
+                                  {{specvar}} == "SM" &
+                                      {{lenvar}} >= 200 &
+                                      {{lenvar}} < 325 ~ "ADULT",
+                                  {{specvar}} == "SM" &
+                                      {{lenvar}} >=325 ~ "ADULT_PIC",
+                                  {{specvar}} == "NP" &
+                                      {{lenvar}} < 300 ~ "JUV",
+                                  {{specvar}} == "NP" &
+                                      {{lenvar}} >= 300 &
+                                      {{lenvar}} < 450 ~ "ADULT",
+                                  {{specvar}} == "NP" &
+                                      {{lenvar}} >= 450 ~ "ADULT_PIC",
+                                  {{specvar}} == "WE" &
+                                      {{lenvar}} < 300 ~ "JUV",
+                                  {{specvar}} == "WE" &
+                                      {{lenvar}} >= 300 &
+                                      {{lenvar}} < 375 ~ "ADULT",
+                                  {{specvar}} == "WE" &
+                                      {{lenvar}} >= 375 ~ "ADULT_PIC"))
 
     } else {
         .data %>%
-            dplyr::mutate(ls = dplyr::case_when(specvar == "SM" &
-                                      lenvar < 100 ~ "SUB-JUV",
-                                  specvar == "SM" &
-                                      lenvar >= 100 & lenvar < 200 ~ "JUV",
-                                  specvar == "SM" &
-                                      lenvar >= 200 ~ "ADULT",
-                                  specvar == "NP" &
-                                      lenvar < 300 ~ "JUV",
-                                  specvar == "NP" &
-                                      lenvar >= 300 ~ "ADULT",
-                                  specvar == "WE" &
-                                      lenvar < 300 ~ "JUV",
-                                  specvar == "WE" &
-                                      lenvar >= 300 ~ "ADULT"))
+            dplyr::mutate(ls = dplyr::case_when({{specvar}} == "SM" &
+                                      {{lenvar}} < 100 ~ "SUB-JUV",
+                                  {{specvar}} == "SM" &
+                                      {{lenvar}} >= 100 &
+                                      {{lenvar}} < 200 ~ "JUV",
+                                  {{specvar}} == "SM" &
+                                      {{lenvar}} >= 200 ~ "ADULT",
+                                  {{specvar}} == "NP" &
+                                      {{lenvar}} < 300 ~ "JUV",
+                                  {{specvar}} == "NP" &
+                                      {{lenvar}} >= 300 ~ "ADULT",
+                                  {{specvar}} == "WE" &
+                                      {{lenvar}} < 300 ~ "JUV",
+                                  {{specvar}} == "WE" &
+                                      {{lenvar}} >= 300 ~ "ADULT"))
     }
 }
 
