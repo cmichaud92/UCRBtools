@@ -6,6 +6,7 @@ field_xlsx_wkbk <- function(.site_data,
                             .ntf_data,
                             .year,
                             .study,
+                            .agency,
                             .output_path,
                             .overwrite) {
 
@@ -121,7 +122,12 @@ field_xlsx_wkbk <- function(.site_data,
                        gridExpand = TRUE)
 
 
-    openxlsx::saveWorkbook(wb = B, file = file.path(.output_path, paste0(paste("FINAL_STReaMS_fmt", .year, .study, sep = "_"), ".xlsx")),
+    openxlsx::saveWorkbook(wb = B, file = file.path(.output_path, paste0(paste("STReaMS_field-collection_fmt",
+                                                                               .study,
+                                                                               .agency,
+                                                                               .year,
+                                                                               sep = "_"),
+                                                                         ".xlsx")),
                            overwrite = .overwrite)
 }
 
