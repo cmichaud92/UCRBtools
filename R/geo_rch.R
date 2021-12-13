@@ -49,9 +49,9 @@ geo_rch <- function(.data, cd_rvr = cd_rvr, rmi = rmi_nhd) {
                                                    {{cd_rvr}} == "CO" &
                                                        between({{rmi}}, 96.0, 118.0) ~ "CIS",
                                                    {{cd_rvr}} == "CO" &
-                                                       between({{rmi}}, 118.1, 129.3) ~ "WW",
-                                                   {{cd_rvr}} == "CO" &
-                                                       between({{rmi}}, 129.3, 154.6) ~ "RUHT",
+                                                       between({{rmi}}, 118.1, 154.6) ~ "WWRH",
+                                                   # {{cd_rvr}} == "CO" &
+                                                   #     between({{rmi}}, 129.3, 154.6) ~ "RUHT",
                                                    {{cd_rvr}} == "CO" &
                                                        between({{rmi}}, 154.6, 189.8) ~ "GRVA",
                                                    {{cd_rvr}} == "CO" &
