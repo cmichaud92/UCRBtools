@@ -10,11 +10,11 @@
 
 dbf_io <- function(file_path_in) {
 
-  files <- list.files(path = file_path_in, pattern = '.dbf$', full.names = TRUE)
+  files <- list.files(path = file_path_in, pattern = '.dbf$', full.names = TRUE, ignore.case = TRUE)
 
   dat_name <- list()
 
-  dat_name <- as.list(stringr::str_extract(files, "(?<=\\+).*(?=\\.dbf)")) # Creates list-element names from file names
+  dat_name <- as.list(stringr::str_extract(files, "(?<=\\+).*(?=\\.[DdBbFf])")) # Creates list-element names from file names
 
 
   data <- purrr::map(files, foreign::read.dbf, as.is = TRUE) # Read all dbf files, strings as characters (as.is)
