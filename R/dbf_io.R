@@ -29,4 +29,33 @@ dbf_io <- function(file_path_in) {
 }
 
 
+dbf_io2 <- function(file_path_in, agency = AGENCY, study = STUDY, year = DATA_YEAR, pass = PASS) {
+
+  files <- list.files(path = config$data_path,
+                      pattern = paste0(agency,
+                                       "_",
+                                       study,
+                                       "_",
+                                       year,
+                                       "_",
+                                       pass,
+                                       '.*\\.dbf$'),
+                      full.names = TRUE,
+                      ignore.case = TRUE)
+
+  dat_name <- list()
+
+  dat_name <- as.list(stringr::str_extract(files, "(?<=\\+).*(?=\\.[DdBbFf])")) # Creates list-element names from file names
+
+
+  data <- purrr::map(files, foreign::read.dbf, as.is = TRUE) # Read all dbf files, strings as characters (as.is)
+
+  names(data) <- dat_name                                    # Set list-element names
+
+  data <- purrr::map(data, tibble::as_tibble)                        # Converts df to tibbles
+
+  data <- purrr::compact(data)                               # Removes all empty list elements
+
+  data
+}
 
