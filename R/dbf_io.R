@@ -29,16 +29,16 @@ dbf_io <- function(file_path_in) {
 }
 
 
-dbf_io2 <- function(file_path_in, agency = AGENCY, study = STUDY, year = DATA_YEAR, pass = PASS) {
+dbf_io2 <- function(file_path_in, .agency = config$agency, .study = config$study, .year = DATA_YEAR, .pass = PASS) {
 
   files <- list.files(path = config$data_path,
-                      pattern = paste0(agency,
+                      pattern = paste0(.agency,
                                        "_",
-                                       study,
+                                       .study,
                                        "_",
-                                       year,
+                                       .year,
                                        "_",
-                                       pass,
+                                       .pass,
                                        '.*\\.dbf$'),
                       full.names = TRUE,
                       ignore.case = TRUE)
